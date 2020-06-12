@@ -13,16 +13,19 @@ function populateUI() {
   let movieIndex = localStorage.getItem("movieIndex");
   let moviePrice = localStorage.getItem("moviePrice");
   let selectedIndex = JSON.parse(localStorage.getItem("selectedSeat"));
-  seat.forEach((element, index) => {
-    if (selectedIndex.indexOf(index) === -1) {
-    } else {
-      element.className = "seat selected";
-    }
-  });
-  movie.selectedIndex = movieIndex;
-  count = selectedIndex.length;
-  seatCount.innerText = count;
-  price.innerText = count * movie.value;
+  if (selectedIndex !== null) {
+    seat.forEach((element, index) => {
+      if (selectedIndex.indexOf(index) === -1) {
+      } else {
+        element.className = "seat selected";
+      }
+    });
+
+    movie.selectedIndex = movieIndex;
+    count = selectedIndex.length;
+    seatCount.innerText = count;
+    price.innerText = count * movie.value;
+  }
 }
 populateUI();
 
